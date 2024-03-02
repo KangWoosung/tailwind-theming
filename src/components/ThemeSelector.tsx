@@ -29,18 +29,48 @@ const ThemeSelector = ({
     saveToStorage(option);
   };
 
+  const themedStyles = {
+    control: (styles: any) => ({
+      ...styles,
+      backgroundColor: "var(--color-bg-card)",
+      color: "var(--color-text-copy-primary)",
+      borderColor: "var(--color-border)",
+      "&:hover": {
+        borderColor: "var(--color-border-hover)",
+      },
+    }),
+    option: (styles: any, { isFocused, isSelected }: any) => {
+      return {
+        ...styles,
+        backgroundColor: isSelected
+          ? "var(--color-bg-card)"
+          : isFocused
+          ? "var(--color-bg-card)"
+          : "var(--color-bg-card)",
+        color: isSelected
+          ? "var(--color-text-copy-primary)"
+          : "var(--color-text-copy-primary)",
+        "&:hover": {
+          backgroundColor: "var(--color-bg-card-hover)",
+          color: "var(--color-text-copy-primary)",
+        },
+      };
+    },
+  };
+
   return (
     <div>
       <h3>ThemeSelector</h3>
       <ReactSelect
-        isClearable
         classNamePrefix="react-select"
+        className="bg-card text-copy-primary "
         getOptionValue={(option) => getOptionValue(option)}
         getOptionLabel={(option) => option.theme}
         id="themeSelector"
         options={themeOptions}
         value={selectedTheme}
         onChange={(option) => onChangeAction(option as EachOption)}
+        styles={themedStyles}
       />
     </div>
   );
