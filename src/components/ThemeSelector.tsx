@@ -45,7 +45,7 @@ const ThemeSelector = ({
         backgroundColor: isSelected
           ? "var(--color-bg-card)"
           : isFocused
-          ? "var(--color-bg-card)"
+          ? "var(--color-bg-card-hover)"
           : "var(--color-bg-card)",
         color: isSelected
           ? "var(--color-text-copy-primary)"
